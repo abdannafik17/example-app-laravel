@@ -1,7 +1,18 @@
 @extends('template.index')
 
 @section('main')
-<section class="section">
+<main id="main" class="main">
+  <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
@@ -67,11 +78,13 @@
         </div>
       </div>
     </section>
+</main>
+<!-- End #main -->
 @stop
 
-
 @section('footer')
-<footer id="footer" class="footer">
+<!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
@@ -82,5 +95,5 @@
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
-</footer><!-- End Footer -->
+  </footer><!-- End Footer -->
 @stop
