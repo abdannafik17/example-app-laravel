@@ -24,14 +24,35 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Data Siswa </p>
-              <ul>
-                @foreach ($siswa as $val)
-                  <p>This is Student {{ $val}}</p>
-                @endforeach
-              </ul>
-
+              <h5 class="card-title">Data Siswa</h5>
+              
+              @if(!empty($siswa))
+              
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">NISN</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Tempat Lahir</th>
+                    <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Jenis Kelamin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($siswa as $val)
+                  <tr>
+                    <td>{{ $val->nisn }}</td>
+                    <td>{{ $val->nama }}</td>
+                    <td>{{ $val->tempat_lahir }}</td>
+                    <td>{{ $val->tanggal_lahir }}</td>
+                    <td>{{ $val->jenis_kelamin }}</td>
+                  @endforeach
+                  
+                </tbody>
+              </table>
+              @else
+                <p>Tidak ada data siswa yang ditampilkan</p>
+              @endif
             </div>
           </div>
 
