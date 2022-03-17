@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <title>@yield('title')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -24,7 +24,7 @@
   <link href="{{ asset('sb-admin/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
   <link href="{{ asset('sb-admin/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
   <link href="{{ asset('sb-admin/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-  <link href="{{ asset('sb-admin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+  @yield('css')
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('sb-admin/assets/css/style.css') }}" rel="stylesheet">
@@ -35,6 +35,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body>
@@ -274,8 +275,19 @@
   @yield('main')
 
 
-  @yield('footer')
-  
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
  
   
 
@@ -286,13 +298,9 @@
   <script src="{{ asset('sb-admin/assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('sb-admin/assets/vendor/quill/quill.min.js') }}"></script>
   <script src="{{ asset('sb-admin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
-  <script src="{{ asset('sb-admin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-  <script src="{{ asset('sb-admin/assets/vendor/chart.js/chart.min.js') }}"></script>
-  <script src="{{ asset('sb-admin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-  <script src="{{ asset('sb-admin/assets/vendor/echarts/echarts.min.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ asset('sb-admin/assets/js/main.js') }}"></script>
+  
+  @yield('js')
+  
 
 </body>
 
