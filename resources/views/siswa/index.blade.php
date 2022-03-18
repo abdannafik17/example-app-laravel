@@ -25,7 +25,9 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Data Siswa</h5>
-              
+              <a href="{{ url('siswa/create') }}">
+                  <button type="button" class="btn btn-primary">Tambah Data Siswa</button>
+              </a>
               @if(!empty($siswa))
               
               <table class="table datatable">
@@ -36,6 +38,7 @@
                     <th scope="col">Tempat Lahir</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,6 +49,19 @@
                     <td>{{ $val->tempat_lahir }}</td>
                     <td>{{ $val->tanggal_lahir }}</td>
                     <td>{{ $val->jenis_kelamin }}</td>
+                    <td>
+                        <a href="{{ url('siswa/'.$val->id) }}">
+                            <button type="button" class="btn btn-primary">Detail</button>
+                        </a>
+                        <a href="{{ url('siswa/'.$val->id.'/edit') }}">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                        </a>
+                        <form method="post" action="{{ url('siswa/'.$val->id) }}">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
                   @endforeach
                   
                 </tbody>

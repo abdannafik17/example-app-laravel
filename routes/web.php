@@ -23,7 +23,14 @@ Route::get('/about', function(){
     return view('about');
 });
 
+Route::delete('/siswa/{id}', [SiswaController::class, 'destroy']);
+Route::post('/siswa', [SiswaController::class, 'store']);
+Route::get('/siswa/create', [SiswaController::class, 'create']);
+Route::patch('/siswa/{id}', [SiswaController::class, 'update']);
+Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit']);
+Route::get('/siswa/{id}', [SiswaController::class, 'show']);
 Route::get('/siswa', [SiswaController::class, 'index']);
+
 
 Route::get('/student/{id}/{name}', function($id, $nama){
     return 'Halaman Student dengan ID '.$id.' nama : '.$nama;
