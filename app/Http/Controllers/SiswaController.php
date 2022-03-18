@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SiswaRequest;
 
 use App\Models\Siswa;
 
@@ -26,7 +27,7 @@ class SiswaController extends Controller
         return view('siswa.edit', ['siswa' => $siswa]);
     }
 
-    public function update(Request $request, $id)
+    public function update(SiswaRequest $request, $id)
     {      
         $siswa = Siswa::findOrFail($id);
         $siswa->update($request->all());
@@ -40,7 +41,7 @@ class SiswaController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(SiswaRequest $request)
     {
 
         $siswa = Siswa::create($request->all());

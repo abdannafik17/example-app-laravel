@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title', 'Homepage')
+@section('title', 'Detail Siswa')
 
 @section('css')
   <link href="{{ asset('sb-admin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
