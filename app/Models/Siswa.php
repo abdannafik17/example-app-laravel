@@ -17,4 +17,9 @@ class Siswa extends Model
     {
         return $this->hasOne('App\Models\Telepon','id_siswa');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\Models\Kelas','id_kelas');
+    }
 }

@@ -39,6 +39,7 @@
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">No HP</th>
+                    <th scope="col">Kelas</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -51,6 +52,7 @@
                     <td>{{ $val->tanggal_lahir }}</td>
                     <td>{{ $val->jenis_kelamin }}</td>
                     <td>{{ $val->telepon->no_telepon }}</td>
+                    <td>{{ !empty($val->kelas->nama_kelas) ? $val->kelas->nama_kelas : '-' }}</td>
                     <td>
                         <a href="{{ url('siswa/'.$val->id) }}">
                             <button type="button" class="btn btn-primary">Detail</button>
