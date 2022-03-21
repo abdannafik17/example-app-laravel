@@ -38,6 +38,7 @@
                     <th scope="col">Tempat Lahir</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">No HP</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -49,6 +50,7 @@
                     <td>{{ $val->tempat_lahir }}</td>
                     <td>{{ $val->tanggal_lahir }}</td>
                     <td>{{ $val->jenis_kelamin }}</td>
+                    <td>{{ $val->telepon->no_telepon }}</td>
                     <td>
                         <a href="{{ url('siswa/'.$val->id) }}">
                             <button type="button" class="btn btn-primary">Detail</button>

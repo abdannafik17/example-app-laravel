@@ -12,4 +12,9 @@ class Siswa extends Model
     protected $table='siswa';
 
     protected $guarded = ['id', 'created_at'];
+
+    public function telepon()
+    {
+        return $this->hasOne('App\Models\Telepon','id_siswa');
+    }
 }
