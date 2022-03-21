@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SiswaRequest;
 
 use App\Models\Siswa;
+use App\Models\Telepon;
 
 class SiswaController extends Controller
 {
@@ -46,6 +47,9 @@ class SiswaController extends Controller
 
         $siswa = Siswa::create($request->all());
         
+        $telepon = new Telepon();
+        $telepon->no_telepon = $request->input('no_telepon');
+        $siswa->telepon()->save($telepon);
 
         return redirect('siswa');
     }

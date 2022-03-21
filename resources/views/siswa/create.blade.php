@@ -86,6 +86,16 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">No HP</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="no_telepon" value="{{ old('no_telepon') }}">
+                    @if($errors->has('no_telepon'))
+                      <span style="color:red">{{ $errors->first('no_telepon') }}</span>
+                    @endif
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <div class="col-sm-10">
                     <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
                   </div>
