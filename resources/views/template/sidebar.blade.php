@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('/') }}">
+        <a class="nav-link collapsed" href="{{ url('/home') }}">
           <span>Home</span>
         </a>
       </li>

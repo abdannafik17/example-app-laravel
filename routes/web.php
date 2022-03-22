@@ -15,13 +15,9 @@ use App\Http\Controllers\SiswaController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.homepage');
-});
 
-Route::get('/about', function(){
-    return view('about');
-});
+
+
 
 // Route::delete('/siswa/{id}', [SiswaController::class, 'destroy']);
 // Route::post('/siswa', [SiswaController::class, 'store']);
@@ -31,7 +27,15 @@ Route::get('/about', function(){
 // Route::get('/siswa/{id}', [SiswaController::class, 'show']);
 // Route::get('/siswa', [SiswaController::class, 'index']);
 
-Route::resource('siswa', SiswaController::class);
+Route::get('/', function () {
+    return view('login_template');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+    Route::resource('siswa', SiswaController::class);
+});
 
 
 Route::get('/student/{id}/{name}', function($id, $nama){
@@ -46,6 +50,6 @@ Route::get('emp', function(){
     return redirect()->route('employee');
 });
 
-// Auth::routes();
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
