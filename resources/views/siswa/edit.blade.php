@@ -124,6 +124,42 @@
                 </div>
                 
                 <div class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Hobi</legend>
+                  <div class="col-sm-10">
+                    @foreach($list_hobi as $lh)
+                      @php
+                        $i='true';
+                      @endphp
+
+                      @foreach($siswa->hobi as $h)
+                        @if($lh->id == $h->id)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobi[]" value="{{$lh->id}}" checked>
+                            <label class="form-check-label" for="gridCheck1">
+                              {{ $lh->nama_hobi }}
+                            </label>
+                          </div>
+                          @php
+                            $i='false';
+                          @endphp
+                          @break;
+                        @endif
+                      @endforeach
+                      
+                      @if($i == 'true')
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobi[]" value="{{$lh->id}}">
+                          <label class="form-check-label" for="gridCheck1">
+                            {{ $lh->nama_hobi }}
+                          </label>
+                        </div>
+                      @endif
+                    @endforeach
+                    
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
                   <div class="col-sm-10">
                     <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
                   </div>

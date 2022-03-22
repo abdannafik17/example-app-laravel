@@ -8,6 +8,7 @@ use App\Http\Requests\SiswaRequest;
 use App\Models\Siswa;
 use App\Models\Telepon;
 use App\Models\Kelas;
+use App\Models\Hobi;
 
 class SiswaController extends Controller
 {
@@ -27,8 +28,9 @@ class SiswaController extends Controller
     {        
         $siswa = Siswa::findOrFail($id);
         $list_kelas = Kelas::all();
+        $listHobi = Hobi::all();
         $siswa->no_telepon = !empty($siswa->telepon->no_telepon) ? $siswa->telepon->no_telepon : '-';
-        return view('siswa.edit', ['siswa' => $siswa, 'list_kelas' => $list_kelas]);
+        return view('siswa.edit', ['siswa' => $siswa, 'list_kelas' => $list_kelas, 'list_hobi' => $listHobi]);
     }
 
     public function update(SiswaRequest $request, $id)
@@ -41,13 +43,19 @@ class SiswaController extends Controller
         $telepon->no_telepon = $request->input('no_telepon');
         $siswa->telepon()->save($telepon);
 
+        //update hobi
+        if(!empty($request->input('hobi'))) {
+            $siswa->hobi()->sync($request->input('hobi'));
+        }
+        
         return redirect('siswa');  
     }
 
     public function create()
     {
         $listKelas = Kelas::all();
-        return view('siswa.create', ['list_kelas' => $listKelas]);
+        $listHobi = Hobi::all();
+        return view('siswa.create', ['list_kelas' => $listKelas, 'list_hobi' => $listHobi]);
     }
 
    
@@ -59,6 +67,8 @@ class SiswaController extends Controller
         $telepon = new Telepon();
         $telepon->no_telepon = $request->input('no_telepon');
         $siswa->telepon()->save($telepon);
+
+        $siswa->hobi()->attach($request->input('hobi'));
 
         return redirect('siswa');
     }

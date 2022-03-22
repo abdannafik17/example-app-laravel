@@ -60,6 +60,14 @@
                     <input type="text" class="form-control" name="no_hp" value="{{ $siswa->telepon->no_telepon }}" readonly>
                   </div>
                 </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Hobi</label>
+                  <div class="col-sm-10">
+                    @foreach($siswa->hobi as $h)
+                      <strong><span>{{$h->nama_hobi}} , </span></strong>
+                    @endforeach
+                  </div>
+                </div>
             </div>
           </div>
 

@@ -111,6 +111,20 @@
                 </div>
                 
                 <div class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Hobi</legend>
+                  <div class="col-sm-10">
+                    @foreach($list_hobi as $hobi)
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobi[]" value="{{$hobi->id}}">
+                      <label class="form-check-label" for="gridCheck1">
+                        {{ $hobi->nama_hobi }}
+                      </label>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+                
+                <div class="row mb-3">
                   <div class="col-sm-10">
                     <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
                   </div>
