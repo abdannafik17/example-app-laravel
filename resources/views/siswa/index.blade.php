@@ -25,9 +25,12 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Data Siswa</h5>
+              @if (Auth::user()->level == 'admin')
               <a href="{{ url('siswa/create') }}">
                   <button type="button" class="btn btn-primary">Tambah Data Siswa</button>
               </a>
+              @endif
+
               @if(!empty($siswa))
               
               <table class="table datatable">
@@ -57,6 +60,7 @@
                         <a href="{{ url('siswa/'.$val->id) }}">
                             <button type="button" class="btn btn-primary">Detail</button>
                         </a>
+                        @if (Auth::user()->level == 'admin')
                         <a href="{{ url('siswa/'.$val->id.'/edit') }}">
                             <button type="button" class="btn btn-primary">Edit</button>
                         </a>
@@ -65,6 +69,7 @@
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger">Hapus</button>
                         </form>
+                        @endif
                     </td>
                   @endforeach
                   
