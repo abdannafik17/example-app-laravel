@@ -35,6 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+    
+    Route::get('siswa/export/', [SiswaController::class, 'export']);
+
     Route::resource('siswa', SiswaController::class);
     
 });

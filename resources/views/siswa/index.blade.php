@@ -31,6 +31,10 @@
               </a>
               @endif
 
+              <a href="{{ url('siswa/export') }}">
+                  <button type="button" class="btn btn-primary">Export Data Siswa</button>
+              </a>
+
               @if(!empty($siswa))
               
               <table class="table datatable">

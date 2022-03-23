@@ -10,6 +10,9 @@ use App\Models\Telepon;
 use App\Models\Kelas;
 use App\Models\Hobi;
 
+use App\Exports\ExportSiswa;
+use Maatwebsite\Excel\Facades\Excel;
+
 class SiswaController extends Controller
 {
     public function __construct ()
@@ -82,5 +85,10 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::whereId($id)->delete();
         return redirect('siswa');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ExportSiswa, 'siswa.xlsx');
     }
 }
