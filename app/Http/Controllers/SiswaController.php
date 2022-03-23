@@ -11,7 +11,9 @@ use App\Models\Kelas;
 use App\Models\Hobi;
 
 use App\Exports\ExportSiswa;
+use App\Imports\ImportSiswa;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
@@ -66,7 +68,12 @@ class SiswaController extends Controller
         return view('siswa.create', ['list_kelas' => $listKelas, 'list_hobi' => $listHobi]);
     }
 
-   
+    
+    public function import()
+    {
+        return view('siswa.import');
+    }
+
     public function store(SiswaRequest $request)
     {
 
@@ -90,7 +97,7 @@ class SiswaController extends Controller
     public function export() 
     {
         $siswa = Siswa::all();
-        
+
         $data = [];
         $dt = [];
         foreach($siswa as $val) {
@@ -114,5 +121,12 @@ class SiswaController extends Controller
         }
         
         return Excel::download(new ExportSiswa($data), 'siswa.xlsx');
+    }
+
+    public function storeImport(Request $request)
+    {
+        Excel::import(new ImportSiswa, $request->file('file'));
+
+        return redirect('siswa');
     }
 }

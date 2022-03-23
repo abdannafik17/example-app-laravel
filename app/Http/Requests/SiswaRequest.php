@@ -37,7 +37,8 @@ class SiswaRequest extends FormRequest
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'no_telepon' => $noHp,
-            'id_kelas' => 'required'
+            'id_kelas' => 'required',
+            'file' => 'required|mimes:xlsx'
         ];
     }
 }

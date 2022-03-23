@@ -35,6 +35,10 @@
                   <button type="button" class="btn btn-primary">Export Data Siswa</button>
               </a>
 
+              <a href="{{ url('siswa/import') }}">
+                  <button type="button" class="btn btn-primary">Import Data Siswa</button>
+              </a>
+
               @if(!empty($siswa))
               
               <table class="table datatable">
