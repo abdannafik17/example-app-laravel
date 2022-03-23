@@ -12,16 +12,24 @@ class ExportSiswa implements FromCollection, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    protected $data = [];
+
+    public function __construct ($data)
+    {
+        $this->data = $data;
+    }
+    
     public function collection()
     {
-        return Siswa::all();
+        return collect($this->data);
     }
 
     public function headings():array 
     {
         return [
-            'ID', 'NISN', 'NAMA SISWA', 'TEMPAT LAHIR', 'TGL LAHIR',
-            'JENIS KELAMIN', 'WAKTU INPUT', 'WAKTU EDIT', 'ID KELAS'
+            'NISN', 'NAMA SISWA', 'TEMPAT LAHIR', 'TGL LAHIR',
+            'JENIS KELAMIN', 'NO HP', 'KELAS', 'HOBI' 
         ];
     }
 }

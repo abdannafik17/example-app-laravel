@@ -89,6 +89,30 @@ class SiswaController extends Controller
 
     public function export() 
     {
-        return Excel::download(new ExportSiswa, 'siswa.xlsx');
+        $siswa = Siswa::all();
+        
+        $data = [];
+        $dt = [];
+        foreach($siswa as $val) {
+            $dt['nisn'] = $val->nisn;
+            $dt['nama'] = $val->nama;
+            $dt['tempat_lahir'] = $val->tempat_lahir;
+            $dt['tanggal_lahir'] = date('d M Y', strtotime($val->tanggal_lahir));
+            $dt['jenis_kelamin'] = $val->jenis_kelamin;
+            $dt['no_hp'] = $val->telepon->no_telepon;
+            $dt['kelas'] = $val->kelas->nama_kelas;
+
+            $hobi = [];
+            foreach($val->hobi as $valHobi) {
+                array_push($hobi, $valHobi['nama_hobi']);
+            }
+            $hobiString = implode(', ', $hobi);
+            
+            $dt['hobi'] = $hobiString;
+
+            array_push($data, (object)$dt);
+        }
+        
+        return Excel::download(new ExportSiswa($data), 'siswa.xlsx');
     }
 }
